@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>hello</title>
+</head>
+<body>
+<div id="app">
+    <button @click="handleClick">点我</button>
+    <input type="text" v-model = "num"> <button @click = "num++">+</button>
+    <h1>
+        <span v-text="name"></span> 非常帅！
+        <span v-text="num"></span>位女生为其着迷！
+    </h1>
+    <span v-html="name"></span>
+    <!--model-->
+    <hr>
+    <h1>请选择</h1>
+    <input type="checkbox" v-model="lessons" value="java">java</input>
+    <input type="checkbox" v-model="lessons" value="python">python</input>
+    <input type="checkbox" v-model="lessons" value="IOS">IOS</input>
+
+    <h1>
+        选择：{{lessons.join(",")}}
+    </h1>
+    <!--v-on-->
+    <hr>
+    <div style="width: 100px; height: 100px;background-color: cornsilk;"
+        @click="print('div')">
+        <button @click.stop="print('button')">点我试试</button>
+        <a href="http://www.baidu.com" @click.stop.prevent="print('baidu')">百度一下</a>
+    </div>
+    <!--v-for-->
+    <ul>
+        <li v-for="(u,i) in users" :key="i">
+            <span v-text="i+'-'+u.name+','+u.gender+','+u.age"></span>
+        </li>
+    </ul>
+
+    <hr>
+    <ul>
+        <li v-for="(v,k,i) in users[0]">
+            <span v-text="i+'_'+k+':'+v"></span>
+        </li>
+    </ul>
+    <hr>
+    <ul>
+        <li v-for="i in 5">
+            <span v-text="i"></span>
+        </li>
+    </ul>
+</div>
+<script src="node_modules/vue/dist/vue.js"></script>
+<script>
+    const app = new Vue({
+        el:"#app",  //element, vue所作用的标签
+        data:{
+            name:"",
+            num:1,
+            lessons: [],
+            users:[
+                {name:'柳岩', gender:'女', age: 21},
+                {name:'虎哥', gender:'男', age: 30},
+                {name:'范冰冰', gender:'女', age: 24},
+                {name:'刘亦菲', gender:'女', age: 18},
+                {name:'古力娜扎', gender:'女', age: 25}
+            ]
+        },
+        methods:{
+            handleClick(){
+                console.log("hello");
+            },
+            print(msg){
+                console.log(msg);
+            }
+        },
+        created(){
+            this.name="彭于晏";
+        }
+    });
+</script>
+</body>
+</html>
