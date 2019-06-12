@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>hello</title>
+</head>
+<body>
+<div id="app">
+    <counter></counter>
+    <counter></counter>
+    <counter></counter>
+</div>
+
+<script src="node_modules/vue/dist/vue.js"></script>
+<script>
+    // import Vue from 'vue';
+    //定义全局组件
+    // Vue.component("counter",{
+    //     template:"<button @click='count++'>点我试试,你点了{{count}}次！</button>",
+    //     data(){
+    //         return {
+    //             count:0,
+    //         }
+    //     }
+    // });
+
+    //定义局部组件
+    const counter = {
+        template:"<button @click='count++'>点我试试,你点了{{count}}次！</button>",
+        data(){
+            return {
+                count:0,
+            }
+        }
+    };
+
+    const app = new Vue({
+        el:"#app",  //element, vue所作用的标签
+        data:{
+
+        },
+        components:{
+            counter
+        }
+
+    });
+</script>
+</body>
+</html>
